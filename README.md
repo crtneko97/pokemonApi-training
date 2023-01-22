@@ -1,0 +1,2 @@
+# pokemonApi-training
+PokemonApi-practise
