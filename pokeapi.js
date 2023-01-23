@@ -1,22 +1,86 @@
 "use strict";
 //HTML-ELEMENT
 const pokemonSectionEl = document.getElementById("pokemonSection"); 
+const pokeNameEl = document.getElementById("pokeName"); 
+const pokemonImgEl = document.getElementById("pokemonImg"); 
+const pokemonAbilitysEl = document.getElementById("pokeAbilitys"); 
+const numberEl = document.getElementById("number");
+const pokeFormEl = document.getElementById("pokeForm");
+const pokeTypeEl = document.getElementById("pokeType");
+let pokemonIdValue;
+
+//EVENTLISTENER
+pokeFormEl.addEventListener('submit', function (e) {
+  e.preventDefault();
+  console.log(e.target[0].value);
+  let id = e.target[0].value;
+  fetchPokemon(id);
+});
 
 
 //FETCH
-function fetchPokemon(id) {
-fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+async function fetchPokemon(pokemonIdValue) {
+  console.log(pokemonIdValue);
+await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonIdValue}/`)
 .then(res=>res.json()) //Response from the api so it's readable
 .then(data=>createPokemon(data)); //Inserting the data to the function "CreatePokemon"
 }
 
-//SET NUMBER OUT OF POKEMON TO FETCH
-for(let i = 1; i <= 10; i++){
-  fetchPokemon(i);
+//FUNCTION
+function createPokemon(pokemon){
+  console.log(pokemon);
+
+  pokeNameEl.innerHTML = "Name: "+pokemon.name;
+  pokemonSectionEl.appendChild(pokeNameEl);
+  
+  pokemonImgEl.src = pokemon.sprites.front_default;
+  pokemonSectionEl.appendChild(pokemonImgEl);
+
+  for(let i = 0; i < pokemon.abilities.length; i++){
+
+  pokemonAbilitysEl.innerHTML = "Ability: " + pokemon.abilities[i].ability.name;
+  pokemonSectionEl.appendChild(pokemonAbilitysEl);
+  }
+
+  pokeTypeEl.innerHTML = "Type: " + pokemon.types[0].type.name;
+  pokemonSectionEl.appendChild(pokeTypeEl);
+
+  
+
 }
 
 
-function createPokemon(pokemon){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*SET NUMBER OUT OF POKEMON TO FETCH
+for(let i = 1; i <= 10; i++){
+  fetchPokemon(i);
+}
+*/
+
+
+/*function createPokemon(pokemon){
   console.log(pokemon);
 
     let newPokemonName = document.createElement("p");
@@ -52,8 +116,7 @@ function createPokemon(pokemon){
     }
 
 }
-
-
+*/
 
 
 
