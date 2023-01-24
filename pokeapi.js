@@ -7,6 +7,8 @@ const pokemonAbilitysEl = document.getElementById("pokeAbilitys");
 const numberEl = document.getElementById("number");
 const pokeFormEl = document.getElementById("pokeForm");
 const pokeTypeEl = document.getElementById("pokeType");
+const rightsideEl = document.getElementById("rightside");
+const leftsideEl = document.getElementById("leftside");
 let pokemonIdValue;
 
 //EVENTLISTENER
@@ -30,20 +32,20 @@ await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonIdValue}/`)
 function createPokemon(pokemon){
   console.log(pokemon);
 
-  pokeNameEl.innerHTML = "Name: "+pokemon.name;
-  pokemonSectionEl.appendChild(pokeNameEl);
+  pokeNameEl.innerHTML = pokemon.name;
+  leftsideEl.appendChild(pokeNameEl);
   
   pokemonImgEl.src = pokemon.sprites.front_default;
-  pokemonSectionEl.appendChild(pokemonImgEl);
+  leftsideEl.appendChild(pokemonImgEl);
 
   for(let i = 0; i < pokemon.abilities.length; i++){
 
   pokemonAbilitysEl.innerHTML = "Ability: " + pokemon.abilities[i].ability.name;
-  pokemonSectionEl.appendChild(pokemonAbilitysEl);
+  rightsideEl.appendChild(pokemonAbilitysEl);
   }
 
   pokeTypeEl.innerHTML = "Type: " + pokemon.types[0].type.name;
-  pokemonSectionEl.appendChild(pokeTypeEl);
+  rightsideEl.appendChild(pokeTypeEl);
 
   
 

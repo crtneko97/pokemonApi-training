@@ -8,16 +8,7 @@
   </head>
   <body>
     <header>
-      <nav class="navbar">
         
-        <div id="headerDivId" class="headerDivClass">
-          <img src="" alt="">
-          <a href="">Test1</a>
-          <a href="">Test2</a>
-          <a href="">Test3</a>
-        </div>
-
-      </nav>
     </header>
 
     <main>
@@ -25,18 +16,22 @@
     <section id="pokemonSection">
 
 
-    <form id="pokeForm">
-       <label for="number">Submit-Pokemon.Id</label>
-       <input type="number" id="number" name="number" min="1" max="151">
-       <button type="submit" id="getPokemonButton" for="number">Get Pokemon my bro</button>
-    </form>
+      <div id="leftside">
+    <img src="" alt="pokePic" id="pokemonImg">
+    <p id="pokeName" ></p>
+    </div>
+
+    <div id="rightside">
+      <form id="pokeForm">
+         <input type="number" id="number" name="number" min="1" max="151">
+         <br>
+         <button type="submit" id="getPokemonButton" for="number">Get Pokemon my bro</button>
+      </form>
         
 
-      <p id="pokeName" ></p>
-      <img src="" alt="pokePic" id="pokemonImg">
-
-      <li id="pokeType"></li> 
-      <li id="pokeAbilitys"></li>
+      <p id="pokeType"></p> 
+      <p id="pokeAbilitys"></p>
+    </div>
         
     </section>
       
